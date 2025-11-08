@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Αυτή η συσκευή δεν υποστηρίζει head tracking με Apple AirPods. Βεβαιωθείτε ότι η συσκευή σας είναι iPhone 7 ή νεότερη έκδοση και εκτελεί iOS 14.4 ή νεότερη έκδοση.";
+"devices.airpods_unavailable.alert.description" = "Αυτή η συσκευή δεν υποστηρίζει head tracking με Apple AirPods. Βεβαιωθείτε ότι η συσκευή σας είναι iPhone 7 ή νεότερη έκδοση και εκτελεί iOS 15 ή νεότερη έκδοση.";
 
 
 /*  */

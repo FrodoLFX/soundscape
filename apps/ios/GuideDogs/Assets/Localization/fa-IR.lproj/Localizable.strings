@@ -1572,7 +1572,7 @@
 /* Label of a button that allows users to force Soundscape to reconnect to their AirPods Pro device if it isn't connecting automatically */
 "devices.troubleshoot.reconnect" = "اتصال مجدد";
 /* Custom alert description displayed when AirPods head tracking is not supported on the given iOS or device {NumberedPlaceholder="Apple AirPods", "iOS 14.4", "iPhone 7"} */
-"devices.airpods_unavailable.alert.description" = "این دستگاه از ردیابی سر با Apple AirPods پشتیبانی نمی‌کند. بررسی کنید که دستگاه شما آیفون ۷ یا جدیدتر باشد و iOS 14.4 یا جدیدتر را اجرا کند.";
+"devices.airpods_unavailable.alert.description" = "این دستگاه از ردیابی سر با Apple AirPods پشتیبانی نمی‌کند. بررسی کنید که دستگاه شما آیفون ۷ یا جدیدتر باشد و iOS 15 یا جدیدتر را اجرا کند.";
 /* Title for the alert that is displayed when a head tracking device is available, %@ is the name of the device, "Do you want to enable head tracking with your Apple AirPods?", {NumberedPlaceholder="%@"} */
 "devices.reachability.alert.title" = "ردیابی سر با %@ فعال شود؟";
 /* Description for the alert that is displayed when a head tracking device is available, %@ is the name of the device, {NumberedPlaceholder="Soundscape", "%@"} */

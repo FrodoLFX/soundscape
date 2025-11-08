@@ -5,9 +5,12 @@
 //  Copyright (c) Microsoft Corporation.
 //  Licensed under the MIT License.
 //
-//  NOTE: This is a temporary replacement for the @ScaledMetric property wrapper
-//  that is only available in iOS 14.0 and later. Remove this property wrapper when
-//  the minimum supported iOS version increases to 14.0.
+//  NOTE: This is a temporary replacement for the `@ScaledMetric` property wrapper
+//  that is only available in iOS 14.0 and later.  When the minimum supported
+//  iOS version increases beyond the version where `@ScaledMetric` is
+//  universally available (for example iOS 15), this custom property wrapper
+//  can be removed and uses of `CustomScaledMetric` should be replaced with
+//  `ScaledMetric`.
 //
 
 import SwiftUI

@@ -28,57 +28,52 @@ class HeadphoneMotionManagerWrapper {
     weak var deviceDelegate: DeviceDelegate?
 
     // MARK: Initialization
-    
+
+    /// Initialize a wrapper for the headphone motion manager.  Since the
+    /// minimum supported iOS version is now 15, the underlying
+    /// `HeadphoneMotionManager` will always be available.  The previous
+    /// implementation contained conditional code paths for older iOS
+    /// versions; these have been removed.
     convenience init() {
-        if #available(iOS 14.4, *) {
-            let manager = HeadphoneMotionManager()
-            self.init(headphoneMotionManager: manager)
-        } else {
-            // `HeaphoneMotionManager` is not available on
-            // iOS < 14.4
-            self.init(headphoneMotionManager: nil)
-        }
+        let manager = HeadphoneMotionManager()
+        self.init(headphoneMotionManager: manager)
     }
-    
+
+    /// Initialize a wrapper for the headphone motion manager with an
+    /// explicit identifier and name.  The underlying manager is
+    /// unconditionally available on supported systems.
     convenience init(id: UUID, name: String) {
-        if #available(iOS 14.4, *) {
-            let manager = HeadphoneMotionManager(id: id, name: name)
-            self.init(headphoneMotionManager: manager)
-        } else {
-            // `HeaphoneMotionManager` is not available on
-            // iOS < 14.4
-            self.init(headphoneMotionManager: nil)
-        }
+        let manager = HeadphoneMotionManager(id: id, name: name)
+        self.init(headphoneMotionManager: manager)
     }
     
     private init(headphoneMotionManager: UserHeadingDevice?) {
-        if #available(iOS 14.4, *), let headphoneMotionManager = headphoneMotionManager as? HeadphoneMotionManager {
+        // The underlying `CMHeadphoneMotionManager` is available from iOS 14.4
+        // onward and our minimum supported version is iOS 15.  Cast the
+        // provided device to `HeadphoneMotionManager` when possible.  If the
+        // cast fails we treat the device as unavailable.
+        if let headphoneMotionManager = headphoneMotionManager as? HeadphoneMotionManager {
             // Initialize headphone motion manager
             self.headphoneMotionManager = headphoneMotionManager
-            
-            // Initialize status
+
+            // Initialize status with the current value
             let value = headphoneMotionManager.status.value
             self.status = .init(value)
-            
-            // Listen for and publish new values
-            // of `status`
+
+            // Listen for and publish new values of `status`
             subscriber = headphoneMotionManager.status
                 .receive(on: RunLoop.main)
-                .sink(receiveValue: { [weak self] (newValue) in
-                    guard let `self` = self else {
-                        return
-                    }
-                    
+                .sink { [weak self] newValue in
+                    guard let self = self else { return }
                     // Update status
                     self.status.value = newValue
-                })
+                }
         } else {
-            // `CMHeadphoneMotionManager` is not available on
-            // iOS < 14.4
+            // `CMHeadphoneMotionManager` is not available, mark as unavailable
             self.headphoneMotionManager = nil
             self.status = .init(.unavailable)
         }
-        
+
         // After `self` has initialized, initialize delegates
         self.headphoneMotionManager?.headingDelegate = self
         self.headphoneMotionManager?.deviceDelegate = self
@@ -145,22 +140,18 @@ extension HeadphoneMotionManagerWrapper: Device {
     // MARK: Device
     
     static func setupDevice(callback: @escaping DeviceCompletionHandler) {
-        if #available(iOS 14.4, *) {
-            HeadphoneMotionManager.setupDevice { (result) in
-                switch result {
-                case .success(let device):
-                    let manager = device as? HeadphoneMotionManager
-                    let wrapper = HeadphoneMotionManagerWrapper(headphoneMotionManager: manager)
-                    
-                    callback(.success(wrapper))
-                case .failure(let error):
-                    callback(.failure(error))
-                }
+        // The headphone motion manager is always available on the minimum
+        // supported iOS version.  Set up the underlying manager and wrap it
+        // directly.
+        HeadphoneMotionManager.setupDevice { result in
+            switch result {
+            case .success(let device):
+                let manager = device as? HeadphoneMotionManager
+                let wrapper = HeadphoneMotionManagerWrapper(headphoneMotionManager: manager)
+                callback(.success(wrapper))
+            case .failure(let error):
+                callback(.failure(error))
             }
-        } else {
-            // `CMHeadphoneMotionManager` is not available on the device
-            // e.g. Device is running iOS < 14.4
-            callback(.failure(.unavailable))
         }
     }
     

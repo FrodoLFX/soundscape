@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Denne enhed understøtter ikke hovedsporing med Apple AirPods. Kontrollér, at enheden er en iPhone 7 eller nyere og kører iOS 14.4 eller nyere.";
+"devices.airpods_unavailable.alert.description" = "Denne enhed understøtter ikke hovedsporing med Apple AirPods. Kontrollér, at enheden er en iPhone 7 eller nyere og kører iOS 15 eller nyere.";
 
 
 /*  */

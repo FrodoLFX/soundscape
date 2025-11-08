@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Denne enheten støtter ikke hodesporing med Apple AirPods. Sjekk at enheten er en iPhone 7 eller nyere og kjører iOS 14.4 eller nyere.";
+"devices.airpods_unavailable.alert.description" = "Denne enheten støtter ikke hodesporing med Apple AirPods. Sjekk at enheten er en iPhone 7 eller nyere og kjører iOS 15 eller nyere.";
 
 
 /*  */

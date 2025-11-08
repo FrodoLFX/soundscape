@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Tämä laite ei tue pään seurantaa Apple AirPods -kuulokkeilla. Tarkista, että laitteesi on iPhone 7 tai uudempi, ja että siinä on versio iOS 14.4 tai uudempi.";
+"devices.airpods_unavailable.alert.description" = "Tämä laite ei tue pään seurantaa Apple AirPods -kuulokkeilla. Tarkista, että laitteesi on iPhone 7 tai uudempi ja että siinä on iOS 15 tai uudempi.";
 
 
 /*  */

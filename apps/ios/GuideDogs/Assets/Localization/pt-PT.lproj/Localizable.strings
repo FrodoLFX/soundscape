@@ -2842,7 +2842,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Este dispositivo não suporta a deteção do movimento da cabeça com Apple AirPods. Verifique se o seu dispositivo é um iPhone 7 ou posterior e está a executar o iOS 14.4 ou posterior.";
+"devices.airpods_unavailable.alert.description" = "Este dispositivo não suporta a deteção do movimento da cabeça com Apple AirPods. Verifique se o seu dispositivo é um iPhone 7 ou posterior e está a executar o iOS 15 ou posterior.";
 
 
 /*  */

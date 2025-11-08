@@ -2885,7 +2885,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "This device does not support head tracking with Apple AirPods. Check that your device is an iPhone 7 or later and is running iOS 14.4 or later.";
+"devices.airpods_unavailable.alert.description" = "This device does not support head tracking with Apple AirPods. Check that your device is an iPhone 7 or later and is running iOS 15 or later.";
 
 
 /*  */

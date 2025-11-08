@@ -15,35 +15,30 @@ import Foundation
 //
 // This is a temporary class
 class HeadphoneMotionManagerReachabilityWrapper {
-    
+
     // MARK: Parameters
-    
-    let headphoneMotionManagerReachability: DeviceReachability?
-    
+
+    /// The underlying reachability manager.  This is always available on
+    /// supported versions of iOS, so it is non-optional.  The previous
+    /// implementation contained conditional code paths for older iOS
+    /// versions; these have been removed now that we require iOS 15.
+    let headphoneMotionManagerReachability: DeviceReachability
+
     // MARK: Initialization
-    
+
     init() {
-        if #available(iOS 14.4, *) {
-            headphoneMotionManagerReachability = HeadphoneMotionManagerReachability()
-        } else {
-            // `CMHeadphoneMotionManager` is not available on
-            // iOS < 14.4
-            headphoneMotionManagerReachability = nil
-        }
+        // Directly initialize the reachability manager.  No availability
+        // checks are necessary because the minimum supported iOS version
+        // guarantees its existence.
+        headphoneMotionManagerReachability = HeadphoneMotionManagerReachability()
     }
-    
 }
 
 extension HeadphoneMotionManagerReachabilityWrapper: DeviceReachability {
-    
+
     func ping(timeoutInterval: TimeInterval, completion: @escaping ReachabilityCompletion) {
-        if let headphoneMotionManagerReachability = headphoneMotionManagerReachability {
-            headphoneMotionManagerReachability.ping(timeoutInterval: timeoutInterval, completion: completion)
-        } else {
-            // `CMHeadphoneMotionManager` is not available on the device
-            // e.g. Device is running iOS < 14.4
-            completion(false)
-        }
+        // Delegate the ping call to the underlying reachability manager.
+        headphoneMotionManagerReachability.ping(timeoutInterval: timeoutInterval, completion: completion)
     }
-    
+
 }

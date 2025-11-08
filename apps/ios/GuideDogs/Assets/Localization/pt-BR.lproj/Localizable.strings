@@ -2842,7 +2842,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Este dispositivo não é compatível com o recurso Head Tracking para dispositivos Apple AirPods. Verifique se seu telefone é um iPhone 7 ou posterior e tem o iOS 14.4 ou posterior.";
+"devices.airpods_unavailable.alert.description" = "Este dispositivo não é compatível com o recurso Head Tracking para dispositivos Apple AirPods. Verifique se seu telefone é um iPhone 7 ou posterior e tem o iOS 15 ou posterior.";
 
 
 /*  */

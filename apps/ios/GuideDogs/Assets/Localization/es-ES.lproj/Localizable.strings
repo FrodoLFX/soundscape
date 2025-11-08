@@ -2842,7 +2842,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Este dispositivo no admite el seguimiento de cabeza con Apple AirPods. Comprueba que el dispositivo es un iPhone 7 o posterior y que está ejecutando iOS 14.4 o posterior.";
+"devices.airpods_unavailable.alert.description" = "Este dispositivo no admite el seguimiento de la cabeza con Apple AirPods. Comprueba que el dispositivo es un iPhone 7 o posterior y que está ejecutando iOS 15 o posterior.";
 
 
 /*  */

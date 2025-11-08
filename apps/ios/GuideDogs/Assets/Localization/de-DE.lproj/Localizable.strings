@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Dieses Gerät unterstützt kein Head Tracking mit Apple AirPods. Stellen Sie sicher, dass Ihr Gerät ein iPhone 7 (oder höher) ist und iOS 14.4 (oder höher) ausgeführt wird.";
+"devices.airpods_unavailable.alert.description" = "Dieses Gerät unterstützt kein Head‑Tracking mit Apple AirPods. Stellen Sie sicher, dass Ihr Gerät ein iPhone 7 (oder höher) ist und iOS 15 (oder höher) ausgeführt wird.";
 
 
 /*  */

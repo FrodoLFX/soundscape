@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "このデバイスは Apple AirPods のヘッド トラッキングに対応していません。デバイスが iPhone 7 以降で、iOS 14.4 以降が実行されていることを確認してください。";
+"devices.airpods_unavailable.alert.description" = "このデバイスは Apple AirPods のヘッドトラッキングに対応していません。デバイスが iPhone 7 以降で、iOS 15 以降が実行されていることを確認してください。";
 
 
 /*  */

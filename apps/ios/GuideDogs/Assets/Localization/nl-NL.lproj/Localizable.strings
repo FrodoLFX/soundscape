@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Dit apparaat ondersteunt niet het volgen van de kijkrichting met Apple AirPods. Controleer of uw apparaat een iPhone 7 of hoger is en werkt met iOS 14.4 of hoger.";
+"devices.airpods_unavailable.alert.description" = "Dit apparaat ondersteunt niet het volgen van de kijkrichting met Apple AirPods. Controleer of uw apparaat een iPhone 7 of hoger is en werkt met iOS 15 of hoger.";
 
 
 /*  */

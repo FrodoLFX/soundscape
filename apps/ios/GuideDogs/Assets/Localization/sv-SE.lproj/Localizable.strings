@@ -2848,7 +2848,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Den här enheten har inte stöd för huvudspårning med Apple AirPods. Kontrollera att enheten är en iPhone 7 eller senare och kör iOS 14.4 eller senare.";
+"devices.airpods_unavailable.alert.description" = "Den här enheten har inte stöd för huvudspårning med Apple AirPods. Kontrollera att enheten är en iPhone 7 eller senare och kör iOS 15 eller senare.";
 
 
 /*  */

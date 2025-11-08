@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Cet appareil ne prend pas en charge l’option Head Tracking avec les Apple AirPods. Vérifiez si votre appareil est un iPhone 7 ou un modèle ultérieur, et qu’il s’exécute sous iOS 14.4 ou une version plus récente.";
+"devices.airpods_unavailable.alert.description" = "Cet appareil ne prend pas en charge l’option Head Tracking avec les Apple AirPods. Vérifiez si votre appareil est un iPhone 7 ou un modèle ultérieur et qu’il s’exécute sous iOS 15 ou une version plus récente.";
 
 
 /*  */

@@ -2839,7 +2839,7 @@
 
 
 /*  */
-"devices.airpods_unavailable.alert.description" = "Questo dispositivo non supporta il tracciamento della testa con Apple AirPods. Verifica che il tuo dispositivo sia un iPhone 7 o versione successiva e che esegua iOS 14.4 o versione successiva.";
+"devices.airpods_unavailable.alert.description" = "Questo dispositivo non supporta il tracciamento della testa con Apple AirPods. Verifica che il tuo dispositivo sia un iPhone 7 o versione successiva e che esegua iOS 15 o versione successiva.";
 
 
 /*  */
