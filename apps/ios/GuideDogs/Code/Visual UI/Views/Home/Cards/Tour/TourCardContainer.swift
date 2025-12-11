@@ -39,6 +39,11 @@ struct TourCardContainer: View {
                 }
             }
         }
+        // 将导览相关内容作为一个无障碍分组容器：
+        // - children: .contain 让 BeaconCard / WaypointCard 作为独立元素存在
+        // - hint 告诉用户这里包含导览信息和当前路点
+        .accessibilityElement(children: .contain)
+        .accessibilityHint(GDLocalizedString("tour_card.group_hint"))
     }
     
 }
@@ -56,3 +61,4 @@ struct TourCardContainer_Previews: PreviewProvider {
     }
     
 }
+
