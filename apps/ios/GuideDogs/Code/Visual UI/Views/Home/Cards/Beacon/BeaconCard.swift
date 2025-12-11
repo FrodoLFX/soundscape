@@ -1,4 +1,3 @@
-//
 //  BeaconCard.swift
 //  Soundscape
 //
@@ -31,6 +30,10 @@ struct BeaconCard: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        // 将地图和工具栏合并成一个无障碍元素，VoiceOver 一次性朗读
+        .accessibilityElement(children: .combine)
+        // 给整张卡片一个交互提示（双击 / 轻点可进一步操作）
+        .accessibilityHint(GDLocalizedString("beacon_card.interact_hint"))
     }
     
 }
@@ -48,3 +51,4 @@ struct BeaconCard_Previews: PreviewProvider {
     }
     
 }
+
