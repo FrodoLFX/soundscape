@@ -77,9 +77,9 @@ class HomeViewController: UIViewController {
     
     lazy var externalGPSBarButtonItem: UIBarButtonItem = {
         let icon = UIBarButtonItem(image: UIImage(named: "ic_settings_input_antenna_white"),
-                               style: .plain,
-                               target: nil,
-                               action: nil)
+                                   style: .plain,
+                                   target: nil,
+                                   action: nil)
         icon.accessibilityLabel = GDLocalizedString("bar_icon.external_GPS.acc_label")
         return icon
     }()
@@ -112,21 +112,23 @@ class HomeViewController: UIViewController {
         
         DDLogDebug("\(String(describing: type(of: self))) deinitialized")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Setup accessible layout
+        
+        // 基础无障碍布局与容器分组
         setupAccessibleLayout()
-
-        // Register for accessibility notifications
+        configureAccessibleContainers()
+        
+        // 监听 VoiceOver 状态变化，根据需要调整间距和朗读顺序
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(voiceOverStatusChanged),
             name: UIAccessibility.voiceOverStatusDidChangeNotification,
             object: nil
         )
-
-        // Apply VoiceOver-specific adjustments if enabled
+        
+        // 如果启动时 VoiceOver 已经开启，则直接应用优化
         if UIAccessibility.isVoiceOverRunning {
             applyVoiceOverOptimizations()
         }
@@ -271,6 +273,12 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.appWillEnterForeground, object: nil)
     }
     
+    /// 布局完成后再对 banner 高度做一次收尾调整，保证大字号/不同内容下的可读性。
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        applyAccessibleSpacing()
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateCalloutButtonTraits()
@@ -413,7 +421,7 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -488,12 +496,11 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
                 self?.navigationController?.pushViewController(hostingController, animated: true)
                 return
             }
-
+            
             guard let segue = Segue.segue(for: dismissed.selected) else {
                 return
             }
-
-
+            
             self?.performSegue(withIdentifier: segue, sender: self)
         }
     }
@@ -517,7 +524,7 @@ extension HomeViewController {
         
         return
     }
-
+    
 }
 
 // MARK: Notifications
@@ -571,14 +578,14 @@ extension HomeViewController {
         if isExternal {
             // Check if the indicator is already showing
             if var rightBarButtonItems = navigationItem.rightBarButtonItems {
-                    if rightBarButtonItems.contains(externalGPSBarButtonItem) {
-                        return
-                    } else {
-                        // We add the indicator to the current bar button items
-                        rightBarButtonItems.append(externalGPSBarButtonItem)
-                        DispatchQueue.main.async { [weak self] in
-                            self?.navigationItem.rightBarButtonItems = rightBarButtonItems
-                        }
+                if rightBarButtonItems.contains(externalGPSBarButtonItem) {
+                    return
+                } else {
+                    // We add the indicator to the current bar button items
+                    rightBarButtonItems.append(externalGPSBarButtonItem)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.navigationItem.rightBarButtonItems = rightBarButtonItems
+                    }
                 }
             } else {
                 // No other current bar button items. show only the indicator.
@@ -782,3 +789,4 @@ private extension UIAlertController {
     }
     
 }
+

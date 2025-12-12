@@ -1,6 +1,11 @@
 //------------------------------------------------------------------------------
 // MARK: General
 //------------------------------------------------------------------------------
+"sleep_mode.hint" = "Double tap to pause audio and location updates.";
+"callouts.panel.container.label" = "Action buttons";
+"callouts.panel.container.hint" = "Contains location and navigation callout buttons.";
+"home.card.container.label" = "Current activity";
+"home.card.container.hint" = "Shows active beacon or route information.";
 /* Hint describing the action on a beacon option cell in settings */
 "settings.beacon.option.hint" = "Double tap to select beacon sound.";
 /* Hint read by VoiceOver on LocationDetailHeader when the user can tap to reveal more details */
