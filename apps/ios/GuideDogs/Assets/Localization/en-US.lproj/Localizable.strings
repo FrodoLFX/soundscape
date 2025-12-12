@@ -1,6 +1,7 @@
 //------------------------------------------------------------------------------
 // MARK: General
 //------------------------------------------------------------------------------
+"settings.volume.slider.hint" = "Swipe up or down with one finger to adjust the volume."
 "sleep_mode.hint" = "Double tap to pause audio and location updates.";
 "callouts.panel.container.label" = "Action buttons";
 "callouts.panel.container.hint" = "Contains location and navigation callout buttons.";
