@@ -1,12 +1,12 @@
 //------------------------------------------------------------------------------
 // MARK: General
 //------------------------------------------------------------------------------
+/* Hint describing the action on a beacon option cell in settings */
+"settings.beacon.option.hint" = "Double tap to select beacon sound.";
 /* Hint read by VoiceOver on LocationDetailHeader when the user can tap to reveal more details */
 "general.more_info" = "More information available";
-
 /* Hint read by VoiceOver on the beacon card. It instructs users that they can interact with the beacon card for more options. */
 "beacon_card.interact_hint" = "Interact with the beacon card for more options.";
-
 /* Hint read by VoiceOver on the tour card container, announcing that this area contains tour information and the current waypoint. */
 "tour_card.group_hint" = "Tour information and current waypoint.";
 /* Title for an affirmative alert button */

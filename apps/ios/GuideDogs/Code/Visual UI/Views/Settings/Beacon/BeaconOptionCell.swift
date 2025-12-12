@@ -66,6 +66,8 @@ struct BeaconOptionCell: View {
         .buttonStyle(BeaconOptionButtonStyle(name: displayName, isSelected: type == selectedType))
         // 显式告诉 VoiceOver：这个按钮的名字就是 displayName
         .accessibilityLabel(Text(displayName))
+        // 提示用户可以双击来选择这个蜂鸣音选项
+        .accessibilityHint(Text(GDLocalizedString("settings.beacon.option.hint")))
         .accessibilityAddTraits(type == selectedType ? [.isSelected] : [])
     }
 }
@@ -78,3 +80,4 @@ struct BeaconOptionCell_Previews: PreviewProvider {
                          onSelected: nil)
     }
 }
+
