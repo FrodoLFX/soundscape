@@ -64,9 +64,12 @@ struct BeaconOptionCell: View {
             // No-op - label is set by `BeaconOptionButtonStyle`
         })
         .buttonStyle(BeaconOptionButtonStyle(name: displayName, isSelected: type == selectedType))
+        // 显式告诉 VoiceOver：这个按钮的名字就是 displayName
+        .accessibilityLabel(Text(displayName))
         .accessibilityAddTraits(type == selectedType ? [.isSelected] : [])
     }
 }
+
 struct BeaconOptionCell_Previews: PreviewProvider {
     static var previews: some View {
         BeaconOptionCell(type: "test",
