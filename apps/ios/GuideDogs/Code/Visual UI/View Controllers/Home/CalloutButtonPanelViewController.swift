@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import NVActivityIndicatorView
 
 extension NSNotification.Name {
@@ -43,6 +44,9 @@ class CalloutButtonPanelViewController: UIViewController {
     
     var logContext: String?
     
+    /// Stack view 用来垂直排布四个 callout 按钮容器，简化布局并在大字号下保持间距一致。
+    private var stackView: UIStackView!
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -53,10 +57,48 @@ class CalloutButtonPanelViewController: UIViewController {
                 
         configureButtonLabels()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidToggleLocateNotification), name: Notification.Name.didToggleLocate, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidToggleOrientateNotification), name: Notification.Name.didToggleOrientate, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidToggleLookAheadNotification), name: Notification.Name.didToggleLookAhead, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidToggleMarkedPointsNotification), name: Notification.Name.didToggleMarkedPoints, object: nil)
+        // 使用垂直 UIStackView 重新排列四个按钮区域
+        stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 16.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 把 Storyboard 里的容器从原 superview 中移除，添加到 stackView 里
+        [locateContainer, orientContainer, exploreContainer, markedPointsContainer].forEach { container in
+            container?.removeFromSuperview()
+            if let containerView = container {
+                stackView.addArrangedSubview(containerView)
+            }
+        }
+        
+        // 把 stackView 加入到根 view，约束在 headerLabel 下方、并贴合左右和下边缘
+        view.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalToSystemSpacingBelow: headerLabel.bottomAnchor, multiplier: 1.0),
+            stackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.handleDidToggleLocateNotification),
+                                               name: Notification.Name.didToggleLocate,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.handleDidToggleOrientateNotification),
+                                               name: Notification.Name.didToggleOrientate,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.handleDidToggleLookAheadNotification),
+                                               name: Notification.Name.didToggleLookAhead,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.handleDidToggleMarkedPointsNotification),
+                                               name: Notification.Name.didToggleMarkedPoints,
+                                               object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -107,14 +149,18 @@ class CalloutButtonPanelViewController: UIViewController {
     }
     
     private func configureButtonLabels() {
-        // When the font is scaled to an accessibility size, we need to use a slightly smaller text
-        // style to prevent text from getting cut off in the callout button panel
-        let font = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ?
-            UIFont.preferredFont(forTextStyle: .caption2) :
-            UIFont.preferredFont(forTextStyle: .footnote)
+        // 使用 Text Style 让字体跟随系统字号变化；
+        // 在辅助字号下用略小的样式避免过度挤压。
+        let textStyle: UIFont.TextStyle = traitCollection.preferredContentSizeCategory.isAccessibilityCategory
+            ? .caption1
+            : .body
         
-        buttonLabels.forEach { ( label) in
+        let font = UIFont.preferredFont(forTextStyle: textStyle)
+        
+        buttonLabels.forEach { label in
             label.font = font
+            label.adjustsFontForContentSizeCategory = true
+            label.numberOfLines = 0
         }
     }
     
@@ -258,3 +304,4 @@ class CalloutButtonPanelViewController: UIViewController {
     }
     
 }
+
