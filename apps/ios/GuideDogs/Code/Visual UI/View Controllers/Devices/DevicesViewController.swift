@@ -929,15 +929,8 @@ class DevicesViewController: UIViewController {
                     }
                     
                 case DeviceError.unavailable:
-                    var message = GDLocalizedString("devices.connect_headset.unavailable")
-                    
-                    if type == HeadphoneMotionManagerWrapper.self {
-                        // Display a custom message for Apple AirPods
-                        message = GDLocalizedString("devices.airpods_unavailable.alert.description")
-                    }
-                    
                     let alert = ErrorAlerts.buildGeneric(title: GDLocalizedString("devices.connect_headset.error_title"),
-                                                         message: message,
+                                                         message: GDLocalizedString("devices.connect_headset.unavailable"),
                                                          dismissHandler: handler)
                     
                     DispatchQueue.main.async {
